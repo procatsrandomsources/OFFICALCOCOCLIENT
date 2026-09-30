@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eaglercraft Launcher</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 1100px)" href="css/screensize.css">
+    <link rel="stylesheet" media="screen and (max-height: 550px)" href="css/screensize.css">
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+   
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D6C1P4D4KT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D6C1P4D4KT');
+</script>
+<body>
+    <div id="notescreen"></div>
+    <div id="naerror" class="error">
+        <div>
+            <p style="margin-left: 1vw;" class="bolded">SORRY!</p>
+            <p style="color: goldenrod;" id="errortext">This feature hasn't been made yet.</p>
+        </div>
+    </div>
+    <div id="screenerror" class="error">
+        <div>
+            <p style="margin-left: 1vw;" class="bolded">ERROR!</p>
+            <p>Currently this screen resolution is buggy.</p>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div id="gtabs1">
+
+        </div>
+        <div onclick="webedition()" id="gtabs2" class="sidebarOptions selected">
+            <img src="./assets/images/sidebar/i-web.png">
+            <div class="gTabsText">
+                <p class="eaglercraftText"> EAGLERCRAFT : </p>
+                <p>Web Edition </p>
+            </div>
+        </div>
+        <div onclick="moddededition()" id="gtabs3" class="sidebarOptions">
+            <img src="./assets/images/sidebar/i-modded.png">
+            <div class="gTabsText">
+                <p class="eaglercraftText"> EAGLERCRAFT : </p>
+                <p>Modded Editions </p>
+            </div>
+        </div>
+        <div onclick="eaglercontrols()" id="gtabs4" class="sidebarOptions">
+            <img src="./assets/images/sidebar/i-controls.png">
+            <div class="gTabsText">
+                <p class="eaglercraftText"> EAGLERCRAFT : </p>
+                <p>Mobile/Controller </p>
+            </div>
+        </div>
+        <div onclick="eaglerpacks()" id="gtabs5" class="sidebarOptions">
+            <img src="./assets/images/sidebar/i-packs.png">
+            <div class="gTabsText">
+                <p class="eaglercraftText"> EAGLERCRAFT : </p>
+                <p>Resource Packs </p>
+            </div>
+        </div>
+        <div id="gtabs5" class="sidebarOptions sidebarBottom" onclick="credits()">
+            <img src="./assets/images/sidebar/m-credits.png"><div class="gTabsText"><p> Credits</p></div>
+        </div>
+        <div id="gtabs6" class="sidebarOptions sidebarBottom" onclick="settings()">
+            <img src="./assets/images/sidebar/m-settings.png"><div class="gTabsText"><p> Settings</p></div>
+        </div>
+        <div class="launcherVersion"><p>v1.1.00</p></div>
+    </div>
+    <div class="mainPage">
+        <!-- COCONUT SMP Theme Elements -->
+        <div class="coco-client-title">CocoClient</div>
+        
+        <div class="profile-section">
+            <img id="profile-pic" class="profile-pic" src="./assets/images/logo.png" alt="Profile">
+            <div style="display: flex; flex-direction: column; gap: 0.2vw;">
+                <span id="profile-username-display" class="profile-username" style="cursor: pointer;" onclick="changeUsername()">procat999</span>
+                <input type="text" id="username-input" class="profile-username" style="display: none; width: 8vw; font-size: 1vw; background: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 0.2vw;" onblur="saveUsername()" onkeypress="if(event.key === 'Enter') saveUsername()">
+            </div>
+            <div class="profile-icons">
+                <svg class="profile-icon" onclick="settings()" viewBox="0 0 24 24" fill="white">
+                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                </svg>
+                <svg class="profile-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+                <svg class="profile-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                </svg>
+                <svg class="profile-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+                <svg class="profile-icon" viewBox="0 0 24 24" fill="white">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="skin-upload-section">
+            <button class="skin-upload-btn" onclick="document.getElementById('skin-upload').click()">Upload Custom Skin</button>
+            <input type="file" id="skin-upload" class="skin-upload-input" accept="image/png" onchange="handleSkinUpload(event)">
+        </div>
+
+        <div class="coconut-logo" id="coconut-logo">
+            <h1>COCONUT SMP</h1>
+            <p>Chill Survival+ Have Fun!</p>
+        </div>
+
+        <div class="server-status" id="server-status">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>SERVER OFFLINE</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span>MOJANG STATUS</span>
+            </div>
+        </div>
+
+        <div class="play-section" id="play-section">
+            <a id="playbutton-custom" href="mc/1.12.2" style="text-decoration: none;">
+                <button class="play-button-custom">PLAY</button>
+            </a>
+            <span class="server-name">• Coconutsmp</span>
+        </div>
+
+        <!-- Original Game Header -->
+        <div class="gameHeader">
+            <p id="gameedition" class="currentGame bolded">EAGLERCRAFT WEB EDITION</p>
+                <ul class="gameTabs">
+                    <li id="header1" class="headerButtons selected" onclick="playheader()">Play</li>
+                    <li id="header2" style="display: none;" class="headerButtons" onclick="modsheader()">Mods</li>
+                    <li id="header3" class="headerButtons" onclick="faqsheader()">FAQ</li>
+                    <li id="header4" class="headerButtons" onclick="installationheader()">Installations</li>
+                    <li id="header5" class="headerButtons" onclick="errorNA('skins')">Skins</li>
+                    <li id="header6" class="headerButtons" onclick="patchnotesheader()">Patch Notes</li>
+                </ul>
+        </div>
+        <div id="mods">
+            <img class="modketplace-title" src="./assets/images/modketplace-title.png" alt="modketplace">
+            <p class="bolded modssubtitle">Community mods for the EaglerForge Installation.</p>
+            <div id="modsbox"></div>
+        </div>
+        <div id="faq">
+            <p class="bolded faqtitle">Frequently Asked Questions</p>
+            <p>Here are some frequently asked questions about Eaglercraft Launcher.</p>
+            <div id="faqbox"></div>
+        </div>
+        <div id="installations"><div id="installationsbox"></div></div>
+        <div id="game-bg" style="background-image: url(./assets/images/web-edition.jpg); display: none;">
+            <img id="game-title" src="./assets/images/web-title.png" alt="eaglercraft">
+        </div>
+        <div id="patchNotes">
+            <div style="padding: 2vh 3vw 7vh;">
+                <p class="bolded patchnotes-title">Versions</p>
+                <div class="versionscontainer">
+                    <input class="versionBox" type="checkbox" onchange="sortnote('game')" checked><p>Game Releases</p><input class="versionBox" type="checkbox" onchange="sortnote('site')" checked><p>Site Releases</p>
+                </div>
+                <hr>
+                <div id="patchnotesbox"></div>
+            </div>
+        </div>
+        <div id="gameSelection" style="display: none;">
+                <div class="dropdownSelector" onclick="dropdowntoggle()">
+                    <div style="display: flex; gap: 1vw;">
+                        <div class="centeredIcon">
+                            <img id="gameicon" src="./assets/images/mc-icons/grass.png" style="width: 2.5vw;" />
+                        </div>
+                        <div class="versionText">
+                            <p id="gametitle" class="bolded">Latest release</p>
+                            <p id="gameversion">1.12.2-u2</p>
+                        </div>
+                        <div id="dropdownuparrow" class="centeredIcon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="dropdownIcon">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M6 9l6 6l6 -6" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            <div id="dropdn" class="dropdownMenu" style="visibility: hidden;"></div>
+            <a id="playbutton" href="mc/1.12.2"><div id="mainbutton" class="playButton"></div></a>
+            <div class="username centeredIcon bolded"><p id="username">Generic User</p></div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
