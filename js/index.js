@@ -259,7 +259,7 @@ function generatenotes() {
                 notescreenheader.className = "bolded notescreenheader";
                 notescreenheader.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" onclick="closenotescreen()"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>`
                 const notescreenheadertitle = document.createElement("p");
-                notescreenheadertitle.innerHTML = "Patch Notes " + note.title + " " + note.version;
+                notescreenheadertitle.innerHTML = "coconut Patch Notes " + note.title + " " + note.version;
                 const notescreenhr = document.createElement("hr");
 
                 const notescreendetails = document.createElement("div");
@@ -269,7 +269,7 @@ function generatenotes() {
                 notescreendate.innerHTML = note.date;
                 const notescreendescription = document.createElement("p");
                 notescreendescription.className = "bolded notescreenheader";
-                notescreendescription.innerHTML = note.description;
+                notescreendescription.innerHTML = "coconut " + note.description;
 
                 const notescreenlist = document.createElement("ul");
                 note.notes.forEach((item) => {
@@ -337,7 +337,7 @@ function webedition(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/web-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/web-title.png';
-    document.getElementById('gameedition').innerHTML = 'COCONUT WEB EDITION';
+    document.getElementById('gameedition').innerHTML = 'coconut WEB EDITION';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('gtabs2').classList.add('selected');
     // Change body background
@@ -351,7 +351,7 @@ function moddededition(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/modded-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/modded-title.png';
-    document.getElementById('gameedition').innerHTML = 'COCONUT MODDED';
+    document.getElementById('gameedition').innerHTML = 'coconut MODDED';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs3').classList.add('selected');
     // Change body background
@@ -365,7 +365,7 @@ function eaglercontrols(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/controls-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/controls-title.png';
-    document.getElementById('gameedition').innerHTML = 'COCONUT MOBILE/CONTROLLER';
+    document.getElementById('gameedition').innerHTML = 'coconut MOBILE/CONTROLLER';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs4').classList.add('selected');
@@ -381,7 +381,7 @@ function eaglerpacks() {
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/packs.jpg)';
     document.getElementById('game-title').src = './assets/images/packs_title.png';
-    document.getElementById('gameedition').innerHTML = 'COCONUT RESOURCE PACKS';
+    document.getElementById('gameedition').innerHTML = 'coconut RESOURCE PACKS';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs5').classList.add('selected');
@@ -390,10 +390,10 @@ function eaglerpacks() {
 }
 
 function credits() {
-    window.location.href = "/Eaglercraft-Launcher/credits.html";
+    window.location.href = "credits.html";
 }
 function settings() {
-    window.location.href = "/Eaglercraft-Launcher/settings.html";
+    window.location.href = "settings.html";
 }
 
 
