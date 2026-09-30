@@ -72,7 +72,7 @@ function generategames(path) {
             if (localStorage.getItem(game.title) === 'false') {return};
             const gameoption = document.createElement("div");
             gameoption.className = "dropdownOptions";
-            gameoption.style.bottom = margincount + "vw";
+            gameoption.style.top = (margincount + 4.5) + "vw";
             gameoption.addEventListener("click", () => {
                 document.getElementById('gametitle').innerHTML = game.title;
                 document.getElementById('gameversion').innerHTML = game.version;
@@ -337,13 +337,11 @@ function webedition(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/web-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/web-title.png';
-    document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT WEB EDITION';
+    document.getElementById('gameedition').innerHTML = 'COCONUT WEB EDITION';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('gtabs2').classList.add('selected');
-    // Show coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
+    // Change body background
+    document.body.style.backgroundImage = 'url(./assets/images/web-edition.jpg)';
 }
 function moddededition(){
     launcher = "./assets/json/modded.json";
@@ -353,13 +351,11 @@ function moddededition(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/modded-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/modded-title.png';
-    document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT MODDED';
+    document.getElementById('gameedition').innerHTML = 'COCONUT MODDED';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs3').classList.add('selected');
-    // Show coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
+    // Change body background
+    document.body.style.backgroundImage = 'url(./assets/images/modded-edition.jpg)';
 }
 function eaglercontrols(){
     launcher = "./assets/json/assisted.json";
@@ -369,14 +365,12 @@ function eaglercontrols(){
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/controls-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/controls-title.png';
-    document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT MOBILE/CONTROLLER';
+    document.getElementById('gameedition').innerHTML = 'COCONUT MOBILE/CONTROLLER';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs4').classList.add('selected');
-    // Show coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
+    // Change body background
+    document.body.style.backgroundImage = 'url(./assets/images/controls-edition.jpg)';
 }
 
 function eaglerpacks() {
@@ -387,14 +381,12 @@ function eaglerpacks() {
     generatelaunchers(launcher);
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/packs.jpg)';
     document.getElementById('game-title').src = './assets/images/packs_title.png';
-    document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT RESOURCE PACKS';
+    document.getElementById('gameedition').innerHTML = 'COCONUT RESOURCE PACKS';
     document.getElementById('header2').style.display = 'none';
     document.getElementById('header5').style.display = 'none';
     document.getElementById('gtabs5').classList.add('selected');
-    // Show coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
+    // Change body background
+    document.body.style.backgroundImage = 'url(./assets/images/packs.jpg)';
 }
 
 function credits() {
@@ -412,48 +404,28 @@ function playheader(){
     document.getElementById('game-bg').style.display = "flex";
     document.getElementById('gameSelection').style.display = "flex";
     document.getElementById('header1').classList.add('selected');
-    // Show coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
 }
 function modsheader(){
     resetHeaderSelected();
     generatemods();
     document.getElementById('mods').style.display = "flex";
     document.getElementById('header2').classList.add('selected');
-    // Hide coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'none';
-    document.getElementById('server-status').style.display = 'none';
-    document.getElementById('play-section').style.display = 'none';
 }
 function faqsheader(){
     resetHeaderSelected();
     document.getElementById('faq').style.display = "flex";
     document.getElementById('header3').classList.add('selected');
-    // Hide coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'none';
-    document.getElementById('server-status').style.display = 'none';
-    document.getElementById('play-section').style.display = 'none';
 }
 function installationheader(){
     resetHeaderSelected();
     document.getElementById('installations').style.display = "flex";
     document.getElementById('header4').classList.add('selected');
-    // Hide coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'none';
-    document.getElementById('server-status').style.display = 'none';
-    document.getElementById('play-section').style.display = 'none';
 }
 function patchnotesheader(){
     resetHeaderSelected();
     generatenotes();
     document.getElementById('patchNotes').style.display = "flex";
     document.getElementById('header6').classList.add('selected');
-    // Hide coconut theme elements
-    document.getElementById('coconut-logo').style.display = 'none';
-    document.getElementById('server-status').style.display = 'none';
-    document.getElementById('play-section').style.display = 'none';
 }
 
 // Dropdown game options toggle
@@ -494,10 +466,6 @@ function resetHeaderSelected() {
     document.getElementById('faq').style.display = "none";
     document.getElementById('installations').style.display = "none";
     document.getElementById('patchNotes').style.display = "none";
-    // Show coconut theme elements by default
-    document.getElementById('coconut-logo').style.display = 'block';
-    document.getElementById('server-status').style.display = 'flex';
-    document.getElementById('play-section').style.display = 'flex';
 }
 
 // Prevents touchscreen move
@@ -512,101 +480,32 @@ function preventMotion(event)
 }
 
 // Username Generator
-let username = document.getElementById('username');
 let userchosen = false;
 if (userchosen === false && !localStorage.getItem("username")) {
     fetch("https://genr8rs.com/api/Content/Fun/XboxNameGenerator?genr8rsUserId=1748114452.233968321c14391c2&_sGameGenre=any").then((response) => response.json()).then((data) => {
         if (!data) {return};
-        username.innerHTML = data._sResult;
         localStorage.setItem("username", data._sResult);
         userchosen = true;
+        updateProfileSkin();
     })
-}
-else {username.innerHTML = localStorage.getItem("username")}
-
-// Mojang API Skin Fetching
-async function fetchMojangSkin(username) {
-    try {
-        // Step 1: Get UUID from username
-        const uuidResponse = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`);
-        if (!uuidResponse.ok) {
-            console.error('Failed to fetch UUID');
-            return null;
-        }
-        const uuidData = await uuidResponse.json();
-        const uuid = uuidData.id;
-
-        // Step 2: Get profile data from session server
-        const profileResponse = await fetch(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`);
-        if (!profileResponse.ok) {
-            console.error('Failed to fetch profile');
-            return null;
-        }
-        const profileData = await profileResponse.json();
-
-        // Step 3: Decode Base64 to get skin URL
-        const properties = profileData.properties;
-        const textureProperty = properties.find(prop => prop.name === 'textures');
-        if (!textureProperty) {
-            console.error('No textures property found');
-            return null;
-        }
-
-        const decoded = JSON.parse(atob(textureProperty.value));
-        const skinUrl = decoded.textures.SKIN.url;
-
-        return skinUrl;
-    } catch (error) {
-        console.error('Error fetching skin:', error);
-        return null;
-    }
 }
 
 async function updateProfileSkin() {
-    const currentUsername = localStorage.getItem("username") || "procat999";
+    const currentUsername = localStorage.getItem("username");
     const profilePic = document.getElementById('profile-pic');
     const profileUsername = document.getElementById('profile-username-display');
-    
-    if (profileUsername) {
+
+    if (profileUsername && currentUsername) {
         profileUsername.textContent = currentUsername;
     }
 
-    // Check for custom uploaded skin first
-    const customSkin = localStorage.getItem('customSkin');
-    if (customSkin) {
-        profilePic.src = customSkin;
-        return;
-    }
-
-    // Fetch skin from Mojang API
-    const skinUrl = await fetchMojangSkin(currentUsername);
-    if (skinUrl) {
-        profilePic.src = skinUrl;
+    // Fetch skin from Mojang API and use a face viewer
+    if (currentUsername) {
+        // Use mc-heads.net to get the face
+        profilePic.src = `https://mc-heads.net/avatar/${currentUsername}/180`;
     } else {
         // Fallback to default
         profilePic.src = './assets/images/logo.png';
-    }
-}
-
-// Custom Skin Upload
-function handleSkinUpload(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const skinData = e.target.result;
-            localStorage.setItem('customSkin', skinData);
-            document.getElementById('profile-pic').src = skinData;
-        };
-        reader.readAsDataURL(file);
-    }
-}
-
-// Play Game Function
-function playGame() {
-    const playButton = document.getElementById('playbutton-custom');
-    if (playButton) {
-        window.location.href = playButton.href;
     }
 }
 
@@ -629,9 +528,6 @@ function saveUsername() {
     if (newUsername) {
         localStorage.setItem("username", newUsername);
         display.textContent = newUsername;
-        if (username) {
-            username.innerHTML = newUsername;
-        }
         updateProfileSkin();
     }
     
@@ -646,4 +542,6 @@ generateprofile(1);
 generategames("./assets/json/base.json");
 generatefaqs();
 generatelaunchers("./assets/json/base.json");
+// Set initial background
+document.body.style.backgroundImage = 'url(./assets/images/web-edition.jpg)';
 console.clear();
