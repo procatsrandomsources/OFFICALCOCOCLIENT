@@ -10,18 +10,18 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Eaglercraft 1.12 WASM" />
 		<meta property="og:description" content="Play minecraft 1.12 in your browser" />
-		<meta property="og:image" content="favicon.png" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
+		<meta property="og:image" content="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png" />
+		<link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png" />
 		<script type="text/javascript" src="bootstrap.js"></script>
 		<script type="text/javascript">
 			"use strict";
 			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					
+				// if(window.location.href.indexOf("file:") === 0) {
+				// 	alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+				// }else {
+
 					// %%%%%%%%% launch options %%%%%%%%%%%%
-					
+
 					var relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftXOpts = {
 						demoMode: false,
@@ -29,24 +29,26 @@
 						assetsURI: "assets.epw",
 						worldsDB: "worlds",
 						servers: [
+							{ addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+							{ addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" },
 							{ addr: "wss://play.zelz.net", name: "ZelzNet" },
 							{ addr: "wss://mc.arch.lol", name: "ArchMC" },
 							{ addr: "wss://beta.arch.lol", name: "§r §r §r §r §4§lArchMC Beta" }
     						]
 					};
-					
+
 					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-					
+
 					var q = window.location.search;
 					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
 						q = new window.URLSearchParams(q);
 						var s = q.get("server");
 						if(s) window.eaglercraftXOpts.joinServer = s;
 					}
-					
+
 					main();
-					
-				}
+
+				// }
 			});
 		</script>
 	</head>

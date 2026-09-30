@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Eaglercraft Infdev</title>
+<link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="classes.js"></script>
@@ -11,7 +12,11 @@ alert("You cannot 'open' this file in your browser, the code doesn't work. Uploa
 }else {
 window.addEventListener("load", function(){
 window.eaglercraftXOpts = {
-container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN"};
+container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN",
+servers: [
+	{ addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+	{ addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" ]
+]};
 main();
 });}
 </script>

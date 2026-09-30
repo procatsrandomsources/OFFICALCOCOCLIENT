@@ -10,14 +10,14 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="EaglercraftX 1.8" />
 		<meta property="og:description" content="test directory HTML page" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
+		<link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png" />
 		<script type="text/javascript" src="classes.js"></script>
 		<script type="text/javascript">
 			"use strict";
 			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
+				// if(window.location.href.indexOf("file:") === 0) {
+				// 	alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+				// }else {
 					var relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftXOpts = {
 						demoMode: false,
@@ -28,6 +28,8 @@
 						logInvalidCerts: true,
 						crashOnUncaughtExceptions: true,
 						servers: [
+							{ addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+							{ addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" },
 							{ addr: "ws://localhost:8081/", name: "Local test server" }
 						],
 						relays: [
@@ -45,7 +47,7 @@
 					}
 
 					main();
-				}
+				// }
 			});
 		</script>
 	</head>

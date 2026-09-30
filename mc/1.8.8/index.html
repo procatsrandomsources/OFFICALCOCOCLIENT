@@ -10,18 +10,18 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="EaglercraftX 1.8" />
 		<meta property="og:description" content="Play minecraft 1.8 in your browser" />
-		<meta property="og:image" content="favicon.png" />
-		<link type="image/png" rel="shortcut icon" href="favicon.png" />
+		<meta property="og:image" content="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png" />
+		<link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png" />
 		<script type="text/javascript" src="classes.js"></script>
 		<script type="text/javascript">
 			"use strict";
 			window.addEventListener("load", function() {
-				if(window.location.href.indexOf("file:") === 0) {
-					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
-				}else {
-					
+				// if(window.location.href.indexOf("file:") === 0) {
+				// 	alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+				// }else {
+
 					// %%%%%%%%% launch options %%%%%%%%%%%%
-					
+
 					var relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftXOpts = {
 						demoMode: false,
@@ -30,7 +30,8 @@
 						localesURI: "lang/",
 						worldsDB: "worlds",
 						servers: [
-							/* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
+							{ addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+							{ addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" }
 						],
 						relays: [
 							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
@@ -38,19 +39,19 @@
 							{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId == 2 }
 						]
 					};
-					
+
 					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-					
+
 					var q = window.location.search;
 					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
 						q = new window.URLSearchParams(q);
 						var s = q.get("server");
 						if(s) window.eaglercraftXOpts.joinServer = s;
 					}
-					
+
 					main();
-					
-				}
+
+				// }
 			});
 		</script>
 	</head>

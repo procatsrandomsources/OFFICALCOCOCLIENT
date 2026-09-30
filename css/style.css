@@ -123,6 +123,7 @@ hr {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     border-right: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .sidebarOptions {
@@ -134,13 +135,14 @@ hr {
     padding-left: 1.5vw;
     font-size: 0.9vw;
     line-height: 1.5vw;
-    transition: 0.3s;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     color: white;
 }
 
 .sidebarOptions:hover {
     cursor: pointer;
     background-color: rgba(255, 140, 0, 0.4);
+    transform: translateX(0.3vw);
 }
 
 .sidebarOptions.sidebarBottom {
@@ -148,9 +150,10 @@ hr {
 }
 
 .sidebarOptions.selected {
-    font-weight: 700; 
+    font-weight: 700;
     border-left: 0.4vw solid #ff8c00;
     background-color: rgba(255, 140, 0, 0.3);
+    box-shadow: inset 3px 0 10px rgba(255, 140, 0, 0.2);
 }
 
 #gtabs1 img {width: 3vw;}
@@ -199,12 +202,14 @@ hr {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.95vw;
     line-height: 1.7vw;
-    transition: 0.3s;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .headerButtons:hover {
     cursor: pointer;
-    color: white
+    color: white;
+    background-color: rgba(255, 140, 0, 0.2);
+    border-radius: 0.3vw;
 }
 
 .headerButtons.selected {
@@ -212,6 +217,7 @@ hr {
     color: white;
     font-weight: 800;
     border-bottom: #ff8c00 solid 0.21vw;
+    background-color: rgba(255, 140, 0, 0.15);
 }
 
 /* Body CSS */
@@ -243,6 +249,8 @@ hr {
     display: flex;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    border-radius: 0.5vw 0.5vw 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .dropdownSelector {
@@ -253,12 +261,14 @@ hr {
     width: 27vw;
     align-items: center;
     justify-content: space-around;
-    transition: 0.3s;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 0.3vw 0.3vw 0 0;
 }
 
 .dropdownSelector:hover {
     cursor: pointer;
     background-color: rgba(255, 140, 0, 0.3);
+    transform: translateY(-0.1vw);
 }
 
 .centeredIcon {
@@ -284,13 +294,15 @@ hr {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: 0.1s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.5vw;
 }
 
 .playButton:hover {
     cursor: pointer;
     background-image: url(../assets/images/play-hover.png);
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
 }
 
 .username {
@@ -303,31 +315,17 @@ hr {
 
 @keyframes drop {
     0% {
-        transform: translateY(-300px) scaleY(0.9);
+        transform: translateY(-50px) scale(0.95);
         opacity: 0;
     }
 
-    5% {
-        opacity: .7;
-    }
-
     50% {
-        transform: translateY(0) scaleY(1);
-        opacity: 1;
-    }
-
-    65% {
-        transform: translateY(-17px) scaleY(.9);
-        opacity: 1;
-    }
-
-    75% {
-        transform: translateY(-22px) scaleY(.9);
+        transform: translateY(5px) scale(1.02);
         opacity: 1;
     }
 
     100% {
-        transform: translateY(0) scaleY(1);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
@@ -367,11 +365,13 @@ hr {
     cursor: pointer;
     width: 18vw;
     border: 0.5vw solid var(--ui-main);
-    transition: 0.1s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border-radius: 0.5vw;
 }
 
 .modoption:hover {
-    scale: 1.05;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
 }
 
 .modoption img {
@@ -467,10 +467,13 @@ hr {
     width: 74vw;
     align-items: center;
     font-size: 1.2vw;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border-radius: 0.3vw;
 }
 
 .installationOptions:hover, .installationBox:hover {
     background-color: rgba(255, 140, 0, 0.3);
+    transform: translateX(0.5vw);
 }
 
 .installationOption {
@@ -558,11 +561,14 @@ hr {
     cursor: pointer;
     width: 17vw;
     background-color: black;
-    transition: 0.1s;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.5vw;
 }
 
 .patchnote:hover {
     background-color: var(--ui-main);
+    transform: translateY(-0.3vw);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .patchnote img {
@@ -631,7 +637,16 @@ hr {
     position: absolute;
     left: 1vw;
     top: 4.5vw;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.dropdownMenu.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .dropdownOptions {
@@ -643,10 +658,13 @@ hr {
     background-color: var(--ui-main-dark);
     z-index: 999;
     font-size: 1.1vw;
+    border-radius: 0.3vw;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .dropdownOptions:hover {
     background-color: #ff8c00;
+    transform: scale(1.02);
 }
 
 .dropdownOption {
@@ -660,6 +678,7 @@ hr {
 .dropdownOption img {
     width: 2.5vw;
     height: 2.5vw;
+    border-radius: 0.2vw;
 }
 
 .dropdownOptionText {
@@ -695,6 +714,12 @@ hr {
     background-color: #333;
     object-fit: cover;
     image-rendering: pixelated;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
 }
 
 .profile-username {

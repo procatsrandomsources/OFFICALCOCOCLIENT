@@ -67,12 +67,15 @@ function generategames(path) {
     let margincount = 0;
     fetch(path).then((response) => response.json()).then((data) => {
         data.reverse();
-        data.forEach((game) => {
+        data.forEach((game, index) => {
             if (!localStorage.getItem(game.title) && game.active === false) {localStorage.setItem(game.title, game.active); return};
             if (localStorage.getItem(game.title) === 'false') {return};
             const gameoption = document.createElement("div");
             gameoption.className = "dropdownOptions";
             gameoption.style.top = (margincount + 4.5) + "vw";
+            gameoption.style.opacity = '0';
+            gameoption.style.transform = 'translateY(-10px)';
+            gameoption.style.transition = `opacity 0.2s ease ${index * 0.05}s, transform 0.2s ease ${index * 0.05}s`;
             gameoption.addEventListener("click", () => {
                 document.getElementById('gametitle').innerHTML = game.title;
                 document.getElementById('gameversion').innerHTML = game.version;
@@ -430,12 +433,26 @@ function patchnotesheader(){
 
 // Dropdown game options toggle
 function dropdowntoggle(){
-    if (dropdown.style.visibility === 'hidden') {
-        dropdown.style.visibility = 'visible';
+    if (!dropdown.classList.contains('visible')) {
+        dropdown.classList.add('visible');
         document.getElementById('dropdownuparrow').innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 20 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="dropdownIcon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg>';
+        // Animate dropdown options
+        const options = dropdown.querySelectorAll('.dropdownOptions');
+        options.forEach((option, index) => {
+            setTimeout(() => {
+                option.style.opacity = '1';
+                option.style.transform = 'translateY(0)';
+            }, index * 50);
+        });
     } else {
-        dropdown.style.visibility = 'hidden'; 
+        dropdown.classList.remove('visible');
         document.getElementById('dropdownuparrow').innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 20 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="dropdownIcon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>';
+        // Reset dropdown options
+        const options = dropdown.querySelectorAll('.dropdownOptions');
+        options.forEach((option) => {
+            option.style.opacity = '0';
+            option.style.transform = 'translateY(-10px)';
+        });
     }
 }
 

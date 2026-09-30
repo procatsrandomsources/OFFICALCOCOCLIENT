@@ -2,12 +2,17 @@
 <html>
   <head>
     <title>Eaglercraft Beta 1.7.3</title>
+    <link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
     <script type = text/javascript>
       window.addEventListener("load", function() {
         window.config = {
           gameContainer: "game", assetsLocation: "resources.mc",
+          servers: [
+            { addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+            { addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" }
+          ]
         };
         main();
       });

@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Eaglercraft 1.6.4</title>
+<link type="image/png" rel="shortcut icon" href="https://raw.githubusercontent.com/procatsrandomsources/CocoClient/refs/heads/main/coconut.png">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Eaglercraft is real Minecraft 1.5.2 that you can play in any regular web browser. That includes school chromebooks, it works on all chromebooks. It supports both singleplayer and multiplayer with no extensions." />
@@ -16,14 +17,18 @@
 <script type="text/javascript" src="classes.js"></script>
 <script type="text/javascript" src="eagswebrtc.js"></script>
 <script type="text/javascript">
-if(document.location.href.startsWith("file:")) {
-alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation");
-}else {
+// if(document.location.href.startsWith("file:")) {
+// alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation");
+// }else {
 window.addEventListener("load", function(){
 window.eaglercraftOpts = {
-container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN"};
+container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN",
+servers: [
+	{ addr: "java://mc.coconutsmp.qzz.io", name: "Coconut#1" },
+	{ addr: "java://play.coconutsmp.qzz.io", name: "Coconut#2" }
+]};
 main();
-});}
+});//}
 </script>
 </head>
 <body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
