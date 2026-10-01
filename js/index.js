@@ -26,13 +26,17 @@ function generateprofile(game) {
     let running = false;
     if (!selectedGame1) {
         fetch("./assets/json/base.json").then((response) => response.json()).then((data) => {
-            selectedGame1 = JSON.stringify(data[0]); localStorage.setItem("basegame", selectedGame1);
+            // Select first WASM version, or first available if no WASM
+            const wasmGame = data.find(g => g.wasm === true) || data[0];
+            selectedGame1 = JSON.stringify(wasmGame); localStorage.setItem("basegame", selectedGame1);
         });
     };
     if (game === 1 && selectedGame1) {selectedGame = JSON.parse(selectedGame1);  running = true;}; 
     if (!selectedGame2) {
         fetch("./assets/json/modded.json").then((response) => response.json()).then((data) => {
-            selectedGame2 = JSON.stringify(data[0]); localStorage.setItem("moddedgame", selectedGame2);
+            // Select first WASM version, or first available if no WASM
+            const wasmGame = data.find(g => g.wasm === true) || data[0];
+            selectedGame2 = JSON.stringify(wasmGame); localStorage.setItem("moddedgame", selectedGame2);
         });
     };
     if (game === 2 && selectedGame2) {selectedGame = JSON.parse(selectedGame2);  running = true;}; 
@@ -75,8 +79,21 @@ function generategames(path) {
             gameoption.style.top = (margincount + 4.5) + "vw";
             gameoption.style.opacity = '0';
             gameoption.style.transform = 'translateY(-10px)';
-            gameoption.style.transition = `opacity 0.2s ease ${index * 0.05}s, transform 0.2s ease ${index * 0.05}s`;
+            gameoption.style.transition = `opacity 0.3s ease, transform 0.3s ease`;
+            
+            // Check if game has WASM
+            const hasWasm = game.wasm === true;
+            
+            if (!hasWasm) {
+                gameoption.style.opacity = '0.4';
+                gameoption.style.cursor = 'not-allowed';
+                gameoption.style.filter = 'grayscale(100%)';
+            }
+            
             gameoption.addEventListener("click", () => {
+                if (!hasWasm) {
+                    return; // Don't allow clicking non-WASM versions
+                }
                 document.getElementById('gametitle').innerHTML = game.title;
                 document.getElementById('gameversion').innerHTML = game.version;
                 document.getElementById('gameicon').src = game.icon;
@@ -92,6 +109,9 @@ function generategames(path) {
             gameoptioninner.className = "dropdownOption";
             const gameoptionicon = document.createElement("img");
             gameoptionicon.src = game.icon;
+            if (!hasWasm) {
+                gameoptionicon.style.filter = 'grayscale(100%)';
+            }
         
             const gameoptiontext = document.createElement("div");
             gameoptiontext.className = "dropdownOptionText";
@@ -100,6 +120,17 @@ function generategames(path) {
             gameoptiontitle.innerHTML = game.title;
             const gameoptionversion = document.createElement("p");
             gameoptionversion.innerHTML = game.version;
+            
+            // Add warning for non-WASM versions
+            if (!hasWasm) {
+                const warning = document.createElement("p");
+                warning.className = "wasm-warning";
+                warning.innerHTML = "not able to join coconut";
+                warning.style.fontSize = "0.8vw";
+                warning.style.color = "#ff6b6b";
+                warning.style.marginTop = "0.2vw";
+                gameoptiontext.appendChild(warning);
+            }
         
             gameoptiontext.appendChild(gameoptiontitle);
             gameoptiontext.appendChild(gameoptionversion);
@@ -436,13 +467,19 @@ function dropdowntoggle(){
     if (!dropdown.classList.contains('visible')) {
         dropdown.classList.add('visible');
         document.getElementById('dropdownuparrow').innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 20 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="dropdownIcon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg>';
-        // Animate dropdown options
+        // Animate dropdown options with proper timing
         const options = dropdown.querySelectorAll('.dropdownOptions');
         options.forEach((option, index) => {
+            // Force reflow to ensure animation works
+            option.offsetHeight;
             setTimeout(() => {
-                option.style.opacity = '1';
+                if (option.style.opacity === '0.4') {
+                    option.style.opacity = '0.4';
+                } else {
+                    option.style.opacity = '1';
+                }
                 option.style.transform = 'translateY(0)';
-            }, index * 50);
+            }, index * 30);
         });
     } else {
         dropdown.classList.remove('visible');
@@ -450,7 +487,11 @@ function dropdowntoggle(){
         // Reset dropdown options
         const options = dropdown.querySelectorAll('.dropdownOptions');
         options.forEach((option) => {
-            option.style.opacity = '0';
+            if (option.style.opacity === '0.4') {
+                option.style.opacity = '0.4';
+            } else {
+                option.style.opacity = '0';
+            }
             option.style.transform = 'translateY(-10px)';
         });
     }

@@ -637,10 +637,11 @@ hr {
     position: absolute;
     left: 1vw;
     top: 4.5vw;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
+    z-index: 1000;
 }
 
 .dropdownMenu.visible {
@@ -659,12 +660,16 @@ hr {
     z-index: 999;
     font-size: 1.1vw;
     border-radius: 0.3vw;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.3s ease, filter 0.3s ease;
 }
 
 .dropdownOptions:hover {
     background-color: #ff8c00;
     transform: scale(1.02);
+}
+
+.dropdownOptions:hover .wasm-warning {
+    color: white;
 }
 
 .dropdownOption {
@@ -679,12 +684,21 @@ hr {
     width: 2.5vw;
     height: 2.5vw;
     border-radius: 0.2vw;
+    transition: filter 0.3s ease;
 }
 
 .dropdownOptionText {
     display: grid;
     align-items: center;
     justify-content: flex-start;
+}
+
+.wasm-warning {
+    font-size: 0.75vw;
+    color: #ff6b6b;
+    margin-top: 0.1vw;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .versionText {
